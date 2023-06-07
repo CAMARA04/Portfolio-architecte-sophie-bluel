@@ -34,6 +34,9 @@ body {
 ol, ul {
 	list-style: none;
 }
+a{
+	text-decoration: none;
+}
 blockquote, q {
 	quotes: none;
 }
@@ -122,22 +125,32 @@ li:hover {
 #introduction p {
 	margin-bottom: 0.5em;
 }
+#portfolio{
+	display: flex;
+	flex-direction: column;
+	gap: 51px;
+}
 #portfolio h2 {
 	text-align: center;
-	margin-bottom: 1em;
+	/* margin-bottom: 1em; */
+}
+
+.nav-header{
+	color: black;
 }
 
 .filter-bar{
 	display: flex;
 	gap: 10px;
 	justify-content: center;
+	
 }
 
 .filter-bar a{
-	text-decoration: none;
 	font-family: "syne";
 	
 }
+
 
 .filter{
 	border: 1px solid #1D6154;
@@ -145,7 +158,12 @@ li:hover {
 	color:#1D6154 ;
 	font-size: 16px;
 	text-align: center;
-	
+	padding: 9px 20px;
+}
+
+.filter:hover{
+	background-color: #1D6154;
+	color: white;
 	
 }
 

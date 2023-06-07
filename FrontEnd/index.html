@@ -18,10 +18,12 @@
       <h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
       <nav>
         <ul>
-          <li>projets</li>
-          <li>contact</li>
-          <li>login</li>
-          <li><img src="./assets/icons/instagram.png" alt="Instagram" /></li>
+          <a class="nav-header" href="#portfolio"><li>projets</li></a>
+          <a class="nav-header" href="#contact"><li>contact</li></a>
+          <a class="nav-header" href="#"><li>login</li></a>
+          <a class="nav-header" href="#"
+            ><li><img src="./assets/icons/instagram.png" alt="Instagram" /></li
+          ></a>
         </ul>
       </nav>
     </header>
@@ -54,14 +56,12 @@
 
         <!-- Creation des filtres des la section Portfolio -->
         <div class="filter-bar">
-          <a class="filter" href="#">Tous</a>
-          <a class="filter" href="#">Objets</a>
-          <a class="filter" href="#">Appartement</a>
-          <a class="filter" href="#">Hôtel & restaurants</a>
+          <a class="filter" id="0">Tous</a>
         </div>
 
         <div class="gallery">
-          <figure>
+          <img class="image" id="0" src="" alt="" />
+          <!--   <figure>
             <img src="assets/images/abajour-tahina.png" alt="Abajour Tahina" />
             <figcaption>Abajour Tahina</figcaption>
           </figure>
@@ -135,6 +135,7 @@
             />
             <figcaption>Hotel First Arte - New Delhi</figcaption>
           </figure>
+          -->
         </div>
       </section>
       <section id="contact">
@@ -159,5 +160,6 @@
         </ul>
       </nav>
     </footer>
+    <script src="./js/index.js"></script>
   </body>
 </html>
