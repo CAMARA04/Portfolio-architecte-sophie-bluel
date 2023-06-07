@@ -79,7 +79,6 @@ function createWork(work) {
   img.setAttribute("id", work.id);
   img.setAttribute("imageUrl", work.imageUrl);
   img.setAttribute("title", work.title);
-  // img.setAttribute("categoryId", work.categoryid);
   img.setAttribute("userId", work.userId);
 
   return img;
