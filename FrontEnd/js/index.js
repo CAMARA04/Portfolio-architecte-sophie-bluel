@@ -41,6 +41,8 @@ function createCategorie(categorie) {
 
 getAllCategories();
 
+//*********CREATION DES CARTES WORKS********//
+
 function getAllWorks() {
   fetch("http://localhost:5678/api/works")
     .then((response) => {
@@ -77,7 +79,7 @@ function createWork(work) {
   const img = document.createElement("img");
   // img.setAttribute("class");
   img.setAttribute("id", work.id);
-  img.setAttribute("imageUrl", work.imageUrl);
+  img.setAttribute("src", work.imageUrl);
   img.setAttribute("title", work.title);
   img.setAttribute("userId", work.userId);
 
