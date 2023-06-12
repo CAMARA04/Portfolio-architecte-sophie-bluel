@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login-Sophie Bluel - Architecte d'intérieur</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="description" content="" />
+
+    <link rel="stylesheet" href="./FrontEnd/assets/login.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
+      <nav>
+        <ul>
+          <a class="nav-header" href="#portfolio"><li>projets</li></a>
+          <a class="nav-header" href="#contact"><li>contact</li></a>
+          <a class="nav-header" href="#"><li>login</li></a>
+          <a class="nav-header" href="#"
+            ><li>
+              <img
+                src="./FrontEnd/assets/icons/instagram.png"
+                alt="Instagram"
+              /></li
+          ></a>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <!-- ///**********CREATION DU FORMULAIRE LOG IN***********//// -->
+
+      <section id="login">
+        <h2>Log In</h2>
+
+        <form class="formulaire" method="get" action="#">
+          <div class="form-login">
+            <label for="E-mail">E-mail </label>
+            <input type="text" name="E-mail" id="E-mail" required />
+          </div>
+
+          <div class="form-login">
+            <label for="Mot-de-passe">Mot de passe</label>
+            <input type="text" name="Mot-de-passe" id="Mot-de-passe" required />
+          </div>
+
+          <button class="connexion">Se connecter</button>
+
+          <a href="#">Mot de passe oublié</a>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <nav>
+        <ul>
+          <li>Mentions Légales</li>
+        </ul>
+      </nav>
+    </footer>
+    <script src="./FrontEnd/js/login.js"></script>
+  </body>
+</html>
