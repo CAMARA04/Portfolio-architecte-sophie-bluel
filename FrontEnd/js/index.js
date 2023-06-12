@@ -1,3 +1,5 @@
+let allCategories = [];
+let allProjects = [];
 function getAllCategories() {
   fetch("http://localhost:5678/api/categories")
     .then((response) => {
@@ -11,6 +13,7 @@ function getAllCategories() {
       // traitement des données
       if (data) {
         console.log(data);
+        allCategories = data;
         fillCategories(data);
       }
     })
@@ -47,7 +50,7 @@ function getAllWorks() {
   fetch("http://localhost:5678/api/works")
     .then((response) => {
       // traitement de la reponse
-      console.log(response.tableauWorks);
+      console.log(response);
       if (response.status == 200) {
         return response.json();
       }
@@ -56,6 +59,7 @@ function getAllWorks() {
       // traitement des données
       if (data) {
         console.log(data);
+        allProjects = data;
         fillWorks(data);
       }
     })
@@ -70,19 +74,23 @@ function getAllWorks() {
 
 function fillWorks(tableauWorks) {
   tableauWorks.forEach((element) => {
-    const img = createWork(element);
-    document.querySelector(".gallery").appendChild(img);
+    const projet = createWork(element);
+    document.querySelector(".gallery").appendChild(projet);
   });
 }
 
 function createWork(work) {
+  const figure = document.createElement("figure");
+  figure.setAttribute("id", "figure" + work.id);
   const img = document.createElement("img");
-  // img.setAttribute("class");
-  img.setAttribute("id", work.id);
   img.setAttribute("src", work.imageUrl);
-  img.setAttribute("title", work.title);
-  img.setAttribute("userId", work.userId);
+  img.setAttribute("alt", work.title);
+  figure.appendChild(img);
 
-  return img;
+  const figcaption = document.createElement("figcaption");
+  figcaption.textContent = work.title;
+  figure.appendChild(figcaption);
+  return figure;
 }
+
 getAllWorks();
