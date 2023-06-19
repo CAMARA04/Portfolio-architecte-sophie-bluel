@@ -94,3 +94,16 @@ function createWork(work) {
 }
 
 getAllWorks();
+
+// ******Affichage page editeur *****
+
+if (window.localStorage.getItem("token") !== null) {
+  //Bouton "login remplacé par bouto logout"
+  const loginHeader = document.querySelector("#loginHeader");
+  loginHeader.innerText = "logout";
+  loginHeader.addEventListener("click", function (event) {
+    event.preventDefault();
+    window.localStorage.removeItem("token");
+    window.location.replace("./index.html");
+  });
+}

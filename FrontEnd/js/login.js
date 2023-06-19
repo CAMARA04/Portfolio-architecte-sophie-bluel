@@ -1,4 +1,4 @@
-//detecter un clic qur submit du formulaire ******
+//detecter un clic sur submit du formulaire ******
 
 const login = document.querySelector("#login");
 const email = document.getElementById("email");
@@ -17,6 +17,7 @@ login.addEventListener("submit", function (event) {
     headers: { "Content-type": "application/json" },
     body: JSON.stringify(loginInfo),
   })
+    // *******Differents scenarios*****
     .then((response) => {
       console.log(response);
       if (response.status == 404)
@@ -29,17 +30,22 @@ login.addEventListener("submit", function (event) {
         return response.json();
       }
     })
+
+    // *********Récupération des data*******
     .then((data) => {
       console.log("I'm here", data);
       // si data est different de undefined
+
+      // *******Si DATA disponibles , sauvegarde dans le localstorage****
       if (data) {
         localStorage.setItem("userId", data.userId);
         localStorage.setItem("token", data.token);
         window.location.href = "./index.html";
       }
     })
+
+    // traitement d'un cas d'erreur
     .catch((error) => {
-      // traitement d'un cas d'erreur
       console.log(error);
       alert(
         "Une erreur est survenue Veuillez contacter l'administrateur du site !!"
