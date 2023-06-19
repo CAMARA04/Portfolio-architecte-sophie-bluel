@@ -3,6 +3,7 @@
 *{
      margin: 0;
      padding: 0 ;
+     background:#FFFEF8;
      
  }
 
@@ -70,11 +71,16 @@ li:hover {
     text-decoration: none;
 }
 
+footer a{
+    text-decoration: none;
+    color: black;
+}
+
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;
 	margin: 2em;
-    margin-top: 355px;
+    
 }
 
 #login{
@@ -84,25 +90,25 @@ footer nav ul {
     align-items: center;
 }
 
-#login input{
+.form-login input{
    height: 50px;
-
-
-   font-size: ;
    border:none ;
    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+   font-size: 1.2em;
+   background: #FFFFFF;
 }
 
 #login a{
     color: black;
 }
 
-.formulaire{
+#form{
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 30px;
     width: 380px;
+    margin-bottom: 355px;
 }
 
 .form-login{
@@ -120,4 +126,7 @@ footer nav ul {
     padding: 10px 40px;
 
 }
+
+
+
 
