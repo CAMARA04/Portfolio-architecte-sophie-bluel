@@ -180,6 +180,30 @@ header a{
 	width: 100%;
 
 }
+
+#main-photo{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 15px;
+	
+}
+
+#main-photo button{
+	width: 80%;
+	left: 10%;
+	display: flex;
+	position: relative;
+	gap: 12px;
+	border: none;
+	background-color: #FFFEF8;
+	
+	height: 20px;
+	font-size: 15px;
+	padding-left: 0px;		
+}
+
+
 #contact {
 	width: 50%;
 margin: auto;
@@ -227,5 +251,11 @@ footer nav ul {
 	display: flex;
 	justify-content: flex-end;
 	margin: 2em
+}
+
+.modification{
+	display: flex;
+	flex-direction: row;
+	background: red;
 }
 

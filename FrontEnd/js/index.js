@@ -106,4 +106,17 @@ if (window.localStorage.getItem("token") !== null) {
     window.localStorage.removeItem("token");
     window.location.replace("./index.html");
   });
+
+  /////bouton modifier en dessous photo principale////
+
+  const editPhoto = document.querySelector("#main-photo");
+  const iconeEdit = document.createElement("i");
+  iconeEdit.className = "fa-regular fa-pen-to-square";
+  const textPhoto = document.createElement("p");
+  textPhoto.innerText = "modifier";
+  const btnEditPhoto = document.createElement("button");
+
+  btnEditPhoto.appendChild(iconeEdit);
+  btnEditPhoto.appendChild(textPhoto);
+  editPhoto.appendChild(btnEditPhoto);
 }
