@@ -192,17 +192,21 @@ header a{
 #main-photo button{
 	width: 80%;
 	left: 10%;
+	
+}
+
+
+
+#main-photo button,#presentation button,#portfolio button{
 	display: flex;
 	position: relative;
 	gap: 12px;
 	border: none;
 	background-color: #FFFEF8;
-	
 	height: 20px;
 	font-size: 15px;
 	padding-left: 0px;		
 }
-
 
 #contact {
 	width: 50%;

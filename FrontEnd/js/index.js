@@ -119,4 +119,31 @@ if (window.localStorage.getItem("token") !== null) {
   btnEditPhoto.appendChild(iconeEdit);
   btnEditPhoto.appendChild(textPhoto);
   editPhoto.appendChild(btnEditPhoto);
+
+  /////bouton modifier au dessus de la presentation////
+
+  const editPresentation = document.querySelector("#presentation");
+  const iconeEditPres = document.createElement("i");
+  iconeEditPres.className = "fa-regular fa-pen-to-square";
+  const textEditPres = document.createElement("p");
+  textEditPres.innerText = "modifier";
+  const btnEditPres = document.createElement("button");
+  const firstElement = document.querySelector(".first-element-pres");
+
+  btnEditPres.appendChild(iconeEditPres);
+  btnEditPres.appendChild(textEditPres);
+  editPresentation.appendChild(btnEditPres);
+
+  /////Bouton modifier "MES PROJETS"////
+
+  const editProjets = document.querySelector("#portfolio");
+  const iconeEditPojets = document.createElement("i");
+  iconeEditPojets.className = "fa-regular fa-pen-to-square";
+  const textEditProjets = document.createElement("p");
+  textEditProjets.innerText = "modifier";
+  const btnEditProjets = document.createElement("button");
+
+  btnEditProjets.appendChild(iconeEditPojets);
+  btnEditProjets.appendChild(textEditProjets);
+  editProjets.appendChild(btnEditProjets);
 }
