@@ -107,6 +107,25 @@ if (window.localStorage.getItem("token") !== null) {
     window.location.replace("./index.html");
   });
 
+  //Affichage du bandeau noir en haut de page-Edition/////
+  const bandeauHeader = document.getElementById("bandeau-edition");
+  const bandeauEdition = document.createElement("div");
+  bandeauEdition.className = "edition";
+  const iconeBandeau = document.createElement("i");
+  iconeBandeau.className = "fa-regular fa-pen-to-square";
+  const textBandeau = document.createElement("p");
+  textBandeau.innerText = "Mode édition";
+  const btnEdition = document.createElement("button");
+  const publication = document.createElement("button");
+  publication.innerText = "Publier les changements";
+  publication.className = "publier";
+
+  btnEdition.appendChild(iconeBandeau);
+  btnEdition.appendChild(textBandeau);
+  bandeauEdition.appendChild(btnEdition);
+  bandeauEdition.appendChild(publication);
+  bandeauHeader.insertAdjacentElement("beforebegin", bandeauEdition);
+
   /////bouton modifier en dessous photo principale////
 
   const editPhoto = document.querySelector("#main-photo");
@@ -132,11 +151,13 @@ if (window.localStorage.getItem("token") !== null) {
 
   btnEditPres.appendChild(iconeEditPres);
   btnEditPres.appendChild(textEditPres);
-  editPresentation.appendChild(btnEditPres);
+  // editPresentation.appendChild(btnEditPres);
+  editPresentation.insertBefore(btnEditPres, firstElement);
 
   /////Bouton modifier "MES PROJETS"////
 
   const editProjets = document.querySelector("#portfolio");
+  const portfolioTitle = document.getElementById("portfolio-title");
   const iconeEditPojets = document.createElement("i");
   iconeEditPojets.className = "fa-regular fa-pen-to-square";
   const textEditProjets = document.createElement("p");
@@ -145,5 +166,6 @@ if (window.localStorage.getItem("token") !== null) {
 
   btnEditProjets.appendChild(iconeEditPojets);
   btnEditProjets.appendChild(textEditProjets);
-  editProjets.appendChild(btnEditProjets);
+  // editProjets.appendChild(btnEditProjets);
+  portfolioTitle.insertAdjacentElement("beforeend", btnEditProjets);
 }

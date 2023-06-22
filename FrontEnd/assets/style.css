@@ -107,6 +107,7 @@ li:hover {
 #introduction {
 	display: flex;
 	align-items: center;
+	
 }
 #introduction figure {
 	flex: 1
@@ -118,7 +119,8 @@ li:hover {
 }
 
 #introduction article {
-	flex: 1
+	flex: 1;
+	
 }
 #introduction h2 {
 	margin-bottom: 1em;
@@ -136,6 +138,13 @@ li:hover {
 	text-align: center;
 	/* margin-bottom: 1em; */
 }
+
+
+
+
+
+
+
 
 header a{
 	color: black;
@@ -195,7 +204,9 @@ header a{
 	
 }
 
-
+#presentation button{
+	margin-bottom:1em;
+}
 
 #main-photo button,#presentation button,#portfolio button{
 	display: flex;
@@ -207,6 +218,15 @@ header a{
 	font-size: 15px;
 	padding-left: 0px;		
 }
+
+#portfolio-title{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	gap: 30px;
+}
+
 
 #contact {
 	width: 50%;
@@ -257,9 +277,5 @@ footer nav ul {
 	margin: 2em
 }
 
-.modification{
-	display: flex;
-	flex-direction: row;
-	background: red;
-}
+
 
