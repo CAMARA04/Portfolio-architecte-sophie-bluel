@@ -96,76 +96,52 @@ function createWork(work) {
 getAllWorks();
 
 // ******Affichage page editeur *****
+displayPage();
+function displayPage() {
+  //dans le cas ou je suis authentifié
+  if (localStorage.getItem("token") && localStorage.getItem("userId")) {
+    //Afficher le bouton logout et cacher login
+    const login = document.getElementById("loginHeader");
+    login.style.display = "none";
+    const logout = document.getElementById("logoutHeader");
+    logout.style.display = "block";
+    logout.addEventListener("click", function (event) {
+      event.preventDefault();
+      localStorage.clear();
+      displayPage();
+    });
 
-if (window.localStorage.getItem("token") !== null) {
-  //Bouton "login remplacé par bouto logout"
-  const loginHeader = document.querySelector("#loginHeader");
-  loginHeader.innerText = "logout";
-  loginHeader.addEventListener("click", function (event) {
-    event.preventDefault();
-    window.localStorage.removeItem("token");
-    window.location.replace("./index.html");
-  });
+    //afficher les boutons modifier
+    const listBtnModifier = document.querySelectorAll(".btnModifier");
+    listBtnModifier.forEach((element) => {
+      element.style.display = "flex";
+    });
+    //afficher la barre noir
+    const edition = document.querySelector(".edition");
+    edition.style.display = "block";
 
-  //Affichage du bandeau noir en haut de page-Edition/////
-  const bandeauHeader = document.getElementById("bandeau-edition");
-  const bandeauEdition = document.createElement("div");
-  bandeauEdition.className = "edition";
-  const iconeBandeau = document.createElement("i");
-  iconeBandeau.className = "fa-regular fa-pen-to-square";
-  const textBandeau = document.createElement("p");
-  textBandeau.innerText = "Mode édition";
-  const btnEdition = document.createElement("button");
-  const publication = document.createElement("button");
-  publication.innerText = "Publier les changements";
-  publication.className = "publier";
+    //cacher les filtres
+    const filter = document.querySelector(".filter-bar");
+    filter.style.display = "none";
+  }
+  //si je ne suis pas connecté
+  else {
+    //cacher le bouton logout et afficher login
+    const login = document.getElementById("loginHeader");
+    login.style.display = "block";
+    const logout = document.getElementById("logoutHeader");
+    logout.style.display = "none";
 
-  btnEdition.appendChild(iconeBandeau);
-  btnEdition.appendChild(textBandeau);
-  bandeauEdition.appendChild(btnEdition);
-  bandeauEdition.appendChild(publication);
-  bandeauHeader.insertAdjacentElement("beforebegin", bandeauEdition);
-
-  /////bouton modifier en dessous photo principale////
-
-  const editPhoto = document.querySelector("#main-photo");
-  const iconeEdit = document.createElement("i");
-  iconeEdit.className = "fa-regular fa-pen-to-square";
-  const textPhoto = document.createElement("p");
-  textPhoto.innerText = "modifier";
-  const btnEditPhoto = document.createElement("button");
-
-  btnEditPhoto.appendChild(iconeEdit);
-  btnEditPhoto.appendChild(textPhoto);
-  editPhoto.appendChild(btnEditPhoto);
-
-  /////bouton modifier au dessus de la presentation////
-
-  const editPresentation = document.querySelector("#presentation");
-  const iconeEditPres = document.createElement("i");
-  iconeEditPres.className = "fa-regular fa-pen-to-square";
-  const textEditPres = document.createElement("p");
-  textEditPres.innerText = "modifier";
-  const btnEditPres = document.createElement("button");
-  const firstElement = document.querySelector(".first-element-pres");
-
-  btnEditPres.appendChild(iconeEditPres);
-  btnEditPres.appendChild(textEditPres);
-  // editPresentation.appendChild(btnEditPres);
-  editPresentation.insertBefore(btnEditPres, firstElement);
-
-  /////Bouton modifier "MES PROJETS"////
-
-  const editProjets = document.querySelector("#portfolio");
-  const portfolioTitle = document.getElementById("portfolio-title");
-  const iconeEditPojets = document.createElement("i");
-  iconeEditPojets.className = "fa-regular fa-pen-to-square";
-  const textEditProjets = document.createElement("p");
-  textEditProjets.innerText = "modifier";
-  const btnEditProjets = document.createElement("button");
-
-  btnEditProjets.appendChild(iconeEditPojets);
-  btnEditProjets.appendChild(textEditProjets);
-  // editProjets.appendChild(btnEditProjets);
-  portfolioTitle.insertAdjacentElement("beforeend", btnEditProjets);
+    //cacher les boutons modifier
+    const listBtnModifier = document.querySelectorAll(".btnModifier");
+    listBtnModifier.forEach((element) => {
+      element.style.display = "none";
+    });
+    //cacher la barre noir
+    const edition = document.querySelector(".edition");
+    edition.style.display = "none";
+    //afficher les filtres
+    const filter = document.querySelector(".filter-bar");
+    filter.style.display = "flex";
+  }
 }

@@ -53,10 +53,20 @@ table {
 }
 /** end reset css**/
 body {
-	max-width: 1140px;
-	margin:auto;
+	margin:0;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
+}
+.mainContainer{
+	display: flex;
+	flex-direction: column;
+	max-width: 1140px;
+	margin: auto;
+}
+.edition{
+	background-color: black;
+	width: 100%;
+	padding: 20px;
 }
 header {
 	display: flex;
@@ -104,6 +114,8 @@ li:hover {
 	color: #B1663C;
 }
 
+
+
 #introduction {
 	display: flex;
 	align-items: center;
@@ -139,17 +151,12 @@ li:hover {
 	/* margin-bottom: 1em; */
 }
 
-
-
-
-
-
-
-
 header a{
 	color: black;
 }
-
+#logoutHeader{
+	display: none;
+}
 .filter-bar{
 	display: flex;
 	gap: 10px;
