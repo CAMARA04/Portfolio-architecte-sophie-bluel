@@ -67,7 +67,12 @@ body {
 	background-color: black;
 	width: 100%;
 	padding: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 15px;
 }
+
 header {
 	display: flex;
 	justify-content: space-between;
@@ -90,7 +95,6 @@ h1 > span {
 	font-family: 'Work Sans';
 	font-size:10px;
 	letter-spacing: 0.1em;
-;
 }
 
 h2{
@@ -113,8 +117,6 @@ nav li {
 li:hover {
 	color: #B1663C;
 }
-
-
 
 #introduction {
 	display: flex;
@@ -156,6 +158,7 @@ header a{
 }
 #logoutHeader{
 	display: none;
+	cursor: pointer;
 }
 .filter-bar{
 	display: flex;
@@ -194,7 +197,12 @@ header a{
 
 .gallery img {
 	width: 100%;
+}
 
+.gallery figure{
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
 }
 
 #main-photo{
@@ -216,14 +224,15 @@ header a{
 }
 
 #main-photo button,#presentation button,#portfolio button{
-	display: flex;
+	
 	position: relative;
 	gap: 12px;
 	border: none;
 	background-color: #FFFEF8;
 	height: 20px;
 	font-size: 15px;
-	padding-left: 0px;		
+	padding-left: 0px;	
+	cursor: pointer;	
 }
 
 #portfolio-title{
@@ -283,6 +292,35 @@ footer nav ul {
 	justify-content: flex-end;
 	margin: 2em
 }
+
+.edition{
+	font-family: 'Work Sans' ;
+	
+}
+
+.edition-btn1{
+	display: flex;
+	gap: 10px;
+	color: white;
+	background-color: black;
+	border: none;
+	font-size: 16px;
+	
+}
+
+.publier{
+	background-color:#FFFFFF;
+	border-radius: 60px;
+	padding: 15px 30px;
+	font-weight: 400;
+	font-size: 14px;
+	font-weight: 500;
+	cursor: pointer;
+}
+
+
+
+
 
 
 

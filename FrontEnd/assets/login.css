@@ -118,12 +118,13 @@ footer nav ul {
     width: 100%;
 }
 
-.modif{
+.connexion{
     background-color: #1D6154 ;
     color: #FFFFFF;
     border-radius: 60px;
     border: none;
-    padding: 10px 40px;
+    padding: 10px 50px;
+    cursor: pointer;
 
 }
 

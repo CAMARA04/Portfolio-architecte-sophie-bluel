@@ -118,7 +118,7 @@ function displayPage() {
     });
     //afficher la barre noir
     const edition = document.querySelector(".edition");
-    edition.style.display = "block";
+    edition.style.display = "flex";
 
     //cacher les filtres
     const filter = document.querySelector(".filter-bar");
