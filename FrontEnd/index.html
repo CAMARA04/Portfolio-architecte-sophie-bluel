@@ -12,12 +12,27 @@
     />
     <meta name="description" content="" />
     <link rel="stylesheet" href="./assets/style.css" />
+    <link rel="stylesheet" href="assets/modale.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
   </head>
   <body>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-element">
+          <h1>Galerie photo</h1>
+          <hr />
+          <button class="Ajout-photo">Ajouter une photo</button>
+          <button class="delete">Supprimer la galerie</button>
+        </div>
+      </div>
+    </div>
+
     <div class="edition">
       <button class="edition-btn1">
         <i class="fa-regular fa-pen-to-square"></i>
@@ -122,5 +137,6 @@
       </footer>
     </div>
     <script src="./js/index.js"></script>
+    <script src="js/modale.js"></script>
   </body>
 </html>

@@ -1,0 +1,77 @@
+/* The modal */
+
+.modal{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    overflow: auto;
+}
+
+.modal-content{
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid ;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Work Sans' ;
+    gap: 20px;
+    border-radius: 10px;   
+}
+
+.modal-content h1{
+    font-size: 26px;
+    font-weight: 400;
+    color:#000000 ;
+
+}
+
+.modal-content hr{
+    border: 1px solid #B3B3B3;
+    width: 60%;
+    margin: auto;
+}
+
+.modal-element{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.close{
+    color: black;
+    cursor: pointer;
+    float: right;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: right;
+}
+
+.Ajout-photo{
+    color: #fff;
+    background-color: #1D6154 ;
+    border-radius: 60px;
+    padding: 15px 60px;
+    font-family: 'Syne';
+    font-size: 14px;
+}
+
+.delete{
+    color: #D65353 ;
+    font-family: 'Syne' ;
+    font-size: 14px;
+    border: none;
+    background-color:#fff ;
+
+
+}
+
+
