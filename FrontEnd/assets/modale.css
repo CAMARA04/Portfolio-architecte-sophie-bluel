@@ -17,7 +17,8 @@
     margin: 15% auto;
     padding: 20px;
     border: 1px solid ;
-    width: 80%;
+    width: 40%;
+    height: 70%;
     display: flex;
     flex-direction: column;
     font-family: 'Work Sans' ;
@@ -34,7 +35,7 @@
 
 .modal-content hr{
     border: 1px solid #B3B3B3;
-    width: 60%;
+    width: 70%;
     margin: auto;
 }
 
@@ -43,7 +44,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 40px;
 }
 
 .close{
@@ -62,6 +63,7 @@
     padding: 15px 60px;
     font-family: 'Syne';
     font-size: 14px;
+    cursor: pointer;
 }
 
 .delete{
@@ -70,8 +72,22 @@
     font-size: 14px;
     border: none;
     background-color:#fff ;
+    cursor: pointer;
+}
 
+.modale-gallery{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    width: 70%;
+    gap: 30px;
+    
+}
 
+.modale-gallery img{
+
+    width: 100%;
+    object-fit: cover;
+    /* height: 100px; */
 }
 
 

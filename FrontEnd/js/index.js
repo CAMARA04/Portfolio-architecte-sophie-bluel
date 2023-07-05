@@ -60,6 +60,7 @@ function getAllWorks() {
       if (data) {
         console.log(data);
         allProjects = data;
+
         fillWorks(data);
       }
     })
@@ -145,3 +146,5 @@ function displayPage() {
     filter.style.display = "flex";
   }
 }
+
+console.log("allProjects");
