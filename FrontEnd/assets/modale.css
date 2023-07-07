@@ -18,18 +18,26 @@
     padding: 20px;
     border: 1px solid ;
     width: 40%;
-    height: 70%;
+    font-family: 'Work Sans' ;
+    border-radius: 10px; 
+}
+
+.content-gallery{
     display: flex;
     flex-direction: column;
-    font-family: 'Work Sans' ;
-    gap: 20px;
-    border-radius: 10px;   
+}
+
+.content-ajout{
+    display: none;
+    flex-direction: column;
+    gap: 20px;     
 }
 
 .modal-content h1{
     font-size: 26px;
     font-weight: 400;
     color:#000000 ;
+    margin-top: 30px;
 
 }
 
@@ -44,7 +52,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 40px;
+    gap: 30px;
+    height: 100%;
+    padding:0px 80px ;
+   
 }
 
 .close{
@@ -54,6 +65,11 @@
     font-size: 25px;
     font-weight: bold;
     text-align: right;
+    align-self: flex-end;
+}
+
+.close:hover{
+    scale: 1.5;
 }
 
 .Ajout-photo{
@@ -64,6 +80,8 @@
     font-family: 'Syne';
     font-size: 14px;
     cursor: pointer;
+    width: 70%;
+    border: none;
 }
 
 .delete{
@@ -78,16 +96,49 @@
 .modale-gallery{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    width: 70%;
-    gap: 30px;
-    
+    flex-wrap: wrap;
+    gap: 10px;  
 }
 
 .modale-gallery img{
 
     width: 100%;
     object-fit: cover;
-    /* height: 100px; */
+}
+
+.modale-gallery figure{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+    
+    
+}
+.iconTrash{
+    width: 20px;
+    height: 20px;
+    background-color: black;
+    border-radius: 5px;
+    position: absolute;
+    top:5px;
+    right: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.iconTrash > i{
+    color: white;
+    font-size: 10px;
+}
+.editer-btn{
+    background-color: #fff;
+    border: none;
+    text-align: start;
+    padding: 0px;
+    font-family: 'Work Sans';
+    font-weight: 400;
+    cursor: pointer;
+    font-weight: bold;
 }
 
 
