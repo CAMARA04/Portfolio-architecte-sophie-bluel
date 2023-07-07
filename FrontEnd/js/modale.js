@@ -1,20 +1,21 @@
 const modal = document.getElementById("myModal");
 
 //Ouverture de la modale//
-const openModal = document.querySelectorAll(".btnModifier");
-openModal.forEach(function (openModal) {
-  openModal.addEventListener("click", () => {
-    console.log("je suis cliqué!!!");
+const listBtnModifier = document.querySelectorAll(".btnModifier");
+listBtnModifier.forEach(function (bouttonModifier) {
+  bouttonModifier.addEventListener("click", () => {
     modal.style.display = "block";
+    creataGallerie();
   });
 });
 
 //fermeture de la modale//
-const closeModal = document.getElementsByClassName("close")[0];
-closeModal.addEventListener("click", () => {
-  modal.style.display = "none";
+const listBtnClose = document.querySelectorAll(".close");
+listBtnClose.forEach(function (bouttonClose) {
+  bouttonClose.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
 });
-
 window.addEventListener("click", (event) => {
   if (event.target == modal) {
     modal.style.display = "none";
@@ -22,23 +23,39 @@ window.addEventListener("click", (event) => {
 });
 
 function creataGallerie() {
-  fetch("http://localhost:5678/api/works")
-    .then((response) => response.json())
+  console.log(allProjects);
 
-    .then((gallerieImg) => {
-      for (let i = 0; i < gallerieImg.length; i++) {
-        const projet = gallerieImg[i];
-        const galleryModal = document.querySelector(".modale-gallery");
-        const elementsProjet = document.createElement("figure");
-        const imageElement = document.createElement("img");
-        imageElement.src = projet.imageUrl;
+  const galleryModal = document.querySelector(".modale-gallery");
+  document.querySelector(".modale-gallery").innerHTML = "";
+  for (let i = 0; i < allProjects.length; i++) {
+    const projet = allProjects[i];
+    const elementsProjet = document.createElement("figure");
+    elementsProjet.setAttribute("id", "figure-modal" + projet.id);
+    const imageElement = document.createElement("img");
+    imageElement.src = projet.imageUrl;
 
-        galleryModal.appendChild(elementsProjet);
-        elementsProjet.appendChild(imageElement);
-
-        console.log(projet);
-      }
+    const iconTrash = document.createElement("div");
+    iconTrash.className = "iconTrash";
+    iconTrash.addEventListener("click", (event) => {
+      console.log("je veux supprimer cet element", projet.id);
+      deleteProject(projet.id);
     });
+    const trash = document.createElement("i");
+    trash.className = "fa-solid fa-trash-can";
+    iconTrash.appendChild(trash);
+
+    const btnEditer = document.createElement("button");
+    btnEditer.innerText = "Editer";
+    btnEditer.className = "editer-btn";
+
+    elementsProjet.appendChild(imageElement);
+    elementsProjet.appendChild(iconTrash);
+    elementsProjet.appendChild(btnEditer);
+
+    galleryModal.appendChild(elementsProjet);
+  }
 }
 
-creataGallerie();
+function deleteProject(id) {
+  // coder le fetch de suppression d'un projet
+}

@@ -19,23 +19,6 @@
     />
   </head>
   <body>
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
-      <!-- Modal content -->
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <div class="modal-element">
-          <h1>Galerie photo</h1>
-          <div class="modale-gallery">
-            <!-- Gallerie de la modale -->
-          </div>
-          <hr />
-          <button class="Ajout-photo">Ajouter une photo</button>
-          <button class="delete">Supprimer la galerie</button>
-        </div>
-      </div>
-    </div>
-
     <div class="edition">
       <button class="edition-btn1">
         <i class="fa-regular fa-pen-to-square"></i>
@@ -138,8 +121,33 @@
           </ul>
         </nav>
       </footer>
+      <!-- The Modal -->
+      <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <!-- Modal qui presente la gallery  -->
+          <div class="content-gallery">
+            <span class="close">&times;</span>
+            <div class="modal-element">
+              <h1>Galerie photo</h1>
+              <div class="modale-gallery">
+                <!-- Gallerie de la modale -->
+              </div>
+              <hr />
+              <button class="Ajout-photo">Ajouter une photo</button>
+              <button class="delete">Supprimer la galerie</button>
+            </div>
+          </div>
+
+          <!-- Modal qui presente le formulaire d'ajout -->
+          <div class="content-ajout">
+            <span class="close">&times;</span>
+            <!-- Todo : html du formulaire -->
+          </div>
+        </div>
+      </div>
     </div>
     <script src="./js/index.js"></script>
-    <script src="js/modale.js"></script>
+    <script src="./js/modale.js"></script>
   </body>
 </html>
