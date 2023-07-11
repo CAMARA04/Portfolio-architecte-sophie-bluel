@@ -37,11 +37,14 @@ function creataGallerie() {
     const iconTrash = document.createElement("div");
     iconTrash.className = "iconTrash";
     iconTrash.addEventListener("click", (event) => {
-      console.log("je veux supprimer cet element", projet.id);
-      deleteProject(projet.id);
+      const result = confirm("Souhaitez-vous supprimer cet element ?");
+      if (result) {
+        deleteProject(projet.id);
+      }
     });
     const trash = document.createElement("i");
     trash.className = "fa-solid fa-trash-can";
+
     iconTrash.appendChild(trash);
 
     const btnEditer = document.createElement("button");
@@ -56,6 +59,33 @@ function creataGallerie() {
   }
 }
 
+// Suppression d'un projet //
 function deleteProject(id) {
-  // coder le fetch de suppression d'un projet
+  const options = {
+    method: "DELETE",
+    headers: {
+      accept: "*/*",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  };
+
+  fetch(`http://localhost:5678/api/works/${id}`, options)
+    .then((response) => {
+      console.log(response);
+      if (response.status == 204) {
+        //1/ Supprimer l'element du tableau global allProjects
+        allProjects = allProjects.filter((element) => element.id != id);
+        console.log(allProjects);
+        //2/ Supprimer la figure de la page index
+        document.getElementById("figure" + id).remove();
+        //3/ Supprimer la figure depuis la modale
+        document.getElementById("figure-modal" + id).remove();
+      } else {
+        alert("Veuillez vous reconnecter !");
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+      alert("Erreur de suppression du projet " + id + " ! ");
+    });
 }
