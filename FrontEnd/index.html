@@ -135,46 +135,66 @@
               </div>
               <hr />
               <button class="Ajout-photo">Ajouter une photo</button>
-              <button class="delete">Supprimer la galerie</button>
+              <button id="delete_works" class="delete">
+                Supprimer la galerie
+              </button>
             </div>
           </div>
 
           <!-- Modal qui presente le formulaire d'ajout -->
 
-          <div class="header-modal2">
-            <button id="retour">
-              <i class="fa-solid fa-arrow-left"></i>
-            </button>
-            <span class="close">&times;</span>
-          </div>
           <div class="content-ajout">
-            <h1 id="modal2-title">Ajout photo</h1>
-
-            <div class="photo-add">
-              <i class="fa-regular fa-image"></i>
-              <button id="action-ajout">+Ajouter photo</button>
-              <p>jpg,png:4mo max</p>
+            <div class="header-modal2">
+              <button id="retour">
+                <i id="return_m1" class="fa-solid fa-arrow-left"></i>
+              </button>
+              <span class="close">&times;</span>
             </div>
 
-            <div class="edit-title">
-              <h2 class="info-photo">Titre</h2>
-              <label for="titre-img"></label>
-              <input type="text" required name="title" id="titre-img" />
-            </div>
-            <div class="select-categorie">
-              <h2 class="info-photo">Categories</h2>
-              <label for="categorie-m2"></label>
-              <select name="categorie-m2" id="categorie-m2">
-                <option value="1">Objets</option>
-                <option value="2">Appartements</option>
-                <option value="3">Hôtels & restaurants</option>
-              </select>
-            </div>
+            <div class="modal2-element">
+              <h1 id="modal2-title">Ajout photo</h1>
 
-            <hr />
+              <div class="photo-add-m2">
+                <!-- -----apercu de la photo à ajouter------ -->
+                <div id="apercu-photo">
+                  <img id="photo-ajoutée" />
+                </div>
+                <i id="photo-add-icon" class="fa-regular fa-image"></i>
 
-            <button id="valider-m2">Valider</button>
-            <!-- Todo : html du formulaire -->
+                <label for="ajout-photo" class="ajout-photo"
+                  >+Ajouter photo</label
+                >
+                <input
+                  type="file"
+                  name="picture"
+                  accept=".jpg, .jpeg, .png"
+                  id="file"
+                  required
+                />
+
+                <p>jpg,png:4mo max</p>
+              </div>
+
+              <div class="edit-title">
+                <h2 class="info-photo">Titre</h2>
+                <label for="titre-img"></label>
+                <input type="text" required name="title" id="title" />
+              </div>
+              <div class="select-categorie">
+                <h2 class="info-photo">Categories</h2>
+                <label for="categorie-m2"></label>
+                <select name="category" id="category">
+                  <option value="1">Objets</option>
+                  <option value="2">Appartements</option>
+                  <option value="3">Hôtels & restaurants</option>
+                </select>
+              </div>
+
+              <hr />
+
+              <input type="submit" value="Valider" id="valider-m2" />
+              <!-- Todo : html du formulaire -->
+            </div>
           </div>
         </div>
       </div>

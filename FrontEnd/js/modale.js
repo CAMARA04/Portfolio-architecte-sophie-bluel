@@ -6,8 +6,42 @@ listBtnModifier.forEach(function (bouttonModifier) {
   bouttonModifier.addEventListener("click", () => {
     modal.style.display = "block";
     creataGallerie();
+    displayGallery();
   });
 });
+
+function displayGallery() {
+  const modalwindow1 = document.querySelector(".content-gallery");
+  const modalwindow2 = document.querySelector(".content-ajout");
+  modalwindow2.style.display = "none";
+  modalwindow1.style.display = "flex";
+}
+function displayAjout() {
+  const modalwindow1 = document.querySelector(".content-gallery");
+  const modalwindow2 = document.querySelector(".content-ajout");
+  modalwindow1.style.display = "none";
+  modalwindow2.style.display = "flex";
+}
+
+function displayModals() {
+  const ajoutPhoto = document.querySelector(".Ajout-photo");
+  const returnM1 = document.getElementById("return_m1");
+
+  // ******Bouton ajout modale**********
+  ajoutPhoto.addEventListener("click", () => {
+    displayAjout();
+  });
+
+  // ******Bouton retour modale 1**********
+  returnM1.addEventListener("click", () => {
+    displayGallery();
+    document.getElementById("file").value = "";
+    document.getElementById("title").value = "";
+    document.getElementById("category").value = "";
+    document.querySelector("#photo-add-m2").style.display = "flex";
+  });
+}
+displayModals();
 
 //fermeture de la modale//
 const listBtnClose = document.querySelectorAll(".close");
@@ -18,7 +52,7 @@ listBtnClose.forEach(function (bouttonClose) {
 });
 window.addEventListener("click", (event) => {
   if (event.target == modal) {
-    modal.style.display = "none";
+    modal.style.display = "block";
   }
 });
 
@@ -29,36 +63,38 @@ function creataGallerie() {
   document.querySelector(".modale-gallery").innerHTML = "";
   for (let i = 0; i < allProjects.length; i++) {
     const projet = allProjects[i];
-    const elementsProjet = document.createElement("figure");
-    elementsProjet.setAttribute("id", "figure-modal" + projet.id);
-    const imageElement = document.createElement("img");
-    imageElement.src = projet.imageUrl;
-
-    const iconTrash = document.createElement("div");
-    iconTrash.className = "iconTrash";
-    iconTrash.addEventListener("click", (event) => {
-      const result = confirm("Souhaitez-vous supprimer cet element ?");
-      if (result) {
-        deleteProject(projet.id);
-      }
-    });
-    const trash = document.createElement("i");
-    trash.className = "fa-solid fa-trash-can";
-
-    iconTrash.appendChild(trash);
-
-    const btnEditer = document.createElement("button");
-    btnEditer.innerText = "Editer";
-    btnEditer.className = "editer-btn";
-
-    elementsProjet.appendChild(imageElement);
-    elementsProjet.appendChild(iconTrash);
-    elementsProjet.appendChild(btnEditer);
-
+    const elementsProjet = createProjetModal(projet);
     galleryModal.appendChild(elementsProjet);
   }
 }
 
+function createProjetModal(projet) {
+  const elementsProjet = document.createElement("figure");
+  elementsProjet.setAttribute("id", "figure-modal" + projet.id);
+  const imageElement = document.createElement("img");
+  imageElement.src = projet.imageUrl;
+  const iconTrash = document.createElement("div");
+  iconTrash.className = "iconTrash";
+  iconTrash.addEventListener("click", (event) => {
+    const result = confirm("Souhaitez-vous supprimer cet element ?");
+    if (result) {
+      deleteProject(projet.id);
+    }
+  });
+  const trash = document.createElement("i");
+  trash.className = "fa-solid fa-trash-can";
+
+  iconTrash.appendChild(trash);
+
+  const btnEditer = document.createElement("button");
+  btnEditer.innerText = "Editer";
+  btnEditer.className = "editer-btn";
+
+  elementsProjet.appendChild(imageElement);
+  elementsProjet.appendChild(iconTrash);
+  elementsProjet.appendChild(btnEditer);
+  return elementsProjet;
+}
 // Suppression d'un projet //
 function deleteProject(id) {
   const options = {
@@ -89,3 +125,71 @@ function deleteProject(id) {
       alert("Erreur de suppression du projet " + id + " ! ");
     });
 }
+
+// *********Rendre le bouton Ajout Photo sous forme d'un INPUT
+
+document.querySelector(".ajout-photo").onclick = function () {
+  document.getElementById("file").click();
+};
+
+// Ajout d'un projet //
+function addproject() {
+  const addNewPict = document.getElementById("valider-m2");
+  addNewPict.addEventListener("click", () => {
+    const title = document.getElementById("title").value;
+    const image = document.getElementById("file").files[0];
+    const category = document.getElementById("category").value;
+    const categoryId = parseInt(category);
+
+    const formData = new FormData();
+
+    formData.append("title", title);
+    formData.append("category", categoryId);
+    formData.append("image", image);
+
+    fetch("http://localhost:5678/api/works", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        Accept: "application/json",
+      },
+      body: formData,
+    })
+      .then((response) => {
+        console.log(response);
+        if (response.ok) return response.json();
+      })
+      .then((projet) => {
+        // l'ajouter sur le tableau globale
+        allProjects.push(projet);
+        // Ajouter sur la page index
+        const figureIndex = createWork(projet);
+        document.querySelector(".gallery").appendChild(figureIndex);
+        // Ajouter l'element dans la modale
+        const figureModale = createProjetModal(projet);
+        document.querySelector(".modale-gallery").appendChild(figureModale);
+        displayGallery();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  });
+}
+addproject();
+
+function deleteWorks() {
+  for (let i = 0; i < allProjects.length; i++) {
+    deleteProject(allProjects[i].id);
+  }
+}
+
+// Valider la suppression de la galerie au click//
+const deleteGalerie = document.getElementById("delete_works");
+deleteGalerie.addEventListener("click", () => {
+  const resultDeleteGalerie = confirm(
+    "Souhaitez-vous vraiment supprimer tous les projets?"
+  );
+  if (resultDeleteGalerie) {
+    deleteWorks();
+  }
+});
