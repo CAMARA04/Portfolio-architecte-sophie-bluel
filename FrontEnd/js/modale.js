@@ -134,7 +134,7 @@ document.querySelector(".ajout-photo").onclick = function () {
 
 // Ajout d'un projet //
 function addproject() {
-  const addNewPict = document.getElementById("valider-m2");
+  const addNewPict = document.getElementById("valider_m2");
   addNewPict.addEventListener("click", () => {
     const title = document.getElementById("title").value;
     const image = document.getElementById("file").files[0];
@@ -191,5 +191,34 @@ deleteGalerie.addEventListener("click", () => {
   );
   if (resultDeleteGalerie) {
     deleteWorks();
+  }
+});
+
+// code pour le preview image modale 2
+
+const containerAjout = document.querySelector(".photo-add-m2");
+const inputFile = document.getElementById("file");
+const previewImage = document.getElementById("previewImage");
+const photoAjoutee = document.getElementById("photo-ajoutee");
+const beforeAjout = document.getElementById("beforeAjout");
+const apercuPhoto = document.getElementById("apercu-photo");
+
+inputFile.addEventListener("change", function () {
+  // Pour vérifier si un objet a été selectionné//
+  if (inputFile.files && inputFile.files[0]) {
+    // Création objet File Reader
+    const reader = new FileReader();
+
+    // Fonction pour rappel lors du changement de fichier //
+    reader.onload = function (e) {
+      // containerAjout.style.padding = "0";
+      apercuPhoto.style.display = "block";
+      beforeAjout.style.display = "none";
+
+      // Affichage de l'apercu de la photo à ajoutée //
+      photoAjoutee.src = e.target.result;
+      photoAjoutee.style.display = "block";
+    };
+    reader.readAsDataURL(inputFile.files[0]);
   }
 });

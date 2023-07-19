@@ -157,22 +157,24 @@
               <div class="photo-add-m2">
                 <!-- -----apercu de la photo à ajouter------ -->
                 <div id="apercu-photo">
-                  <img id="photo-ajoutée" />
+                  <img id="photo-ajoutee" />
                 </div>
-                <i id="photo-add-icon" class="fa-regular fa-image"></i>
+                <div id="beforeAjout">
+                  <i id="photo-add-icon" class="fa-regular fa-image"></i>
 
-                <label for="ajout-photo" class="ajout-photo"
-                  >+Ajouter photo</label
-                >
-                <input
-                  type="file"
-                  name="picture"
-                  accept=".jpg, .jpeg, .png"
-                  id="file"
-                  required
-                />
-
-                <p>jpg,png:4mo max</p>
+                  <label for="ajout-photo" class="ajout-photo"
+                    >+Ajouter photo</label
+                  >
+                  <input
+                    type="file"
+                    name="picture"
+                    accept=".jpg, .jpeg, .png"
+                    id="file"
+                    required
+                  />
+                  <img id="previewImage" src="#" alt="Image Preview" />
+                  <p>jpg,png:4mo max</p>
+                </div>
               </div>
 
               <div class="edit-title">
@@ -192,7 +194,7 @@
 
               <hr />
 
-              <input type="submit" value="Valider" id="valider-m2" />
+              <input type="submit" value="Valider" id="valider_m2" />
               <!-- Todo : html du formulaire -->
             </div>
           </div>
