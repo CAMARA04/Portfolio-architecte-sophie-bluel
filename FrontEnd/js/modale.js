@@ -35,15 +35,16 @@ function displayModals() {
   // ******Bouton retour modale 1**********
   returnM1.addEventListener("click", () => {
     displayGallery();
-    document.getElementById("file").value = "";
+    document.getElementById("file").src = "";
+
     document.getElementById("title").value = "";
     document.getElementById("category").value = "";
-    document.querySelector("#photo-add-m2").style.display = "flex";
+    document.getElementById("beforeAjout").style.display = "flex";
+    document.getElementById("apercu-photo").style.display = "none";
   });
 }
 displayModals();
 
-//fermeture de la modale//
 const listBtnClose = document.querySelectorAll(".close");
 listBtnClose.forEach(function (bouttonClose) {
   bouttonClose.addEventListener("click", () => {
