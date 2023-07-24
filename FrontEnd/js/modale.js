@@ -141,39 +141,42 @@ function addproject() {
     const image = document.getElementById("file").files[0];
     const category = document.getElementById("category").value;
     const categoryId = parseInt(category);
+    if (!title || !category || !image) {
+      alert(" Veuillez remplir tous les champs du formulaire!");
+    } else {
+      const formData = new FormData();
 
-    const formData = new FormData();
+      formData.append("title", title);
+      formData.append("category", categoryId);
+      formData.append("image", image);
 
-    formData.append("title", title);
-    formData.append("category", categoryId);
-    formData.append("image", image);
-
-    fetch("http://localhost:5678/api/works", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-        Accept: "application/json",
-      },
-      body: formData,
-    })
-      .then((response) => {
-        console.log(response);
-        if (response.ok) return response.json();
+      fetch("http://localhost:5678/api/works", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          Accept: "application/json",
+        },
+        body: formData,
       })
-      .then((projet) => {
-        // l'ajouter sur le tableau globale
-        allProjects.push(projet);
-        // Ajouter sur la page index
-        const figureIndex = createWork(projet);
-        document.querySelector(".gallery").appendChild(figureIndex);
-        // Ajouter l'element dans la modale
-        const figureModale = createProjetModal(projet);
-        document.querySelector(".modale-gallery").appendChild(figureModale);
-        displayGallery();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+        .then((response) => {
+          console.log(response);
+          if (response.ok) return response.json();
+        })
+        .then((projet) => {
+          // l'ajouter sur le tableau globale
+          allProjects.push(projet);
+          // Ajouter sur la page index
+          const figureIndex = createWork(projet);
+          document.querySelector(".gallery").appendChild(figureIndex);
+          // Ajouter l'element dans la modale
+          const figureModale = createProjetModal(projet);
+          document.querySelector(".modale-gallery").appendChild(figureModale);
+          displayGallery();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   });
 }
 addproject();
@@ -199,7 +202,16 @@ deleteGalerie.addEventListener("click", () => {
 
 const containerAjout = document.querySelector(".photo-add-m2");
 const inputFile = document.getElementById("file");
-const previewImage = document.getElementById("previewImage");
+const removeImage = document.getElementById("removeImage");
+removeImage.addEventListener("click", function (event) {
+  apercuPhoto.style.display = "none";
+  removeImage.style.display = "none";
+  beforeAjout.style.display = "flex";
+
+  // Affichage de l'apercu de la photo à ajoutée //
+  inputFile.value = null;
+  photoAjoutee.style.display = "none";
+});
 const photoAjoutee = document.getElementById("photo-ajoutee");
 const beforeAjout = document.getElementById("beforeAjout");
 const apercuPhoto = document.getElementById("apercu-photo");
@@ -214,6 +226,7 @@ inputFile.addEventListener("change", function () {
     reader.onload = function (e) {
       // containerAjout.style.padding = "0";
       apercuPhoto.style.display = "block";
+      removeImage.style.display = "block";
       beforeAjout.style.display = "none";
 
       // Affichage de l'apercu de la photo à ajoutée //

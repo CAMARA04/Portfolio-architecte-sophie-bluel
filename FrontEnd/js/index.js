@@ -15,14 +15,6 @@ function getAllCategories() {
         console.log(data);
         allCategories = data;
         fillCategories(data);
-        // *******************verif a faire par Sarra**********************************************
-        // Ajoute des événements sur les filtres de la div "filter-bar"
-        const filters = document.querySelectorAll(".filter");
-        filters.forEach((filter) => {
-          filter.addEventListener("click", function () {
-            filterImagesByCategory(filter.id);
-          });
-        });
       }
     })
     .catch((error) => {
@@ -36,7 +28,7 @@ function getAllCategories() {
 
 function filterImagesByCategory(categoryId) {
   const gallery = document.querySelector(".gallery");
-  gallery.innerHTML = ""; // Effacer le contenu actuel de la galerie
+  gallery.innerHTML = ""; // Efface le contenu actuel de la galerie
 
   // Pour verifier si le bouton "TOUS" est selectionné
   if (categoryId === "0") {
@@ -56,6 +48,8 @@ function fillCategories(tableauCategories) {
   tableauCategories.forEach((element) => {
     const a = createCategorie(element);
     document.querySelector(".filter-bar").appendChild(a);
+    const option = createOption(element);
+    document.getElementById("category").appendChild(option);
   });
 }
 
@@ -64,10 +58,19 @@ function createCategorie(categorie) {
   a.setAttribute("class", "filter");
   a.setAttribute("id", categorie.id);
   a.textContent = categorie.name;
-
+  // Ajoute des événements sur le filtre lors de sa creation
+  a.addEventListener("click", function () {
+    filterImagesByCategory(categorie.id);
+  });
   return a;
 }
+function createOption(categorie) {
+  const option = document.createElement("option");
+  option.setAttribute("value", categorie.id);
+  option.textContent = categorie.name;
 
+  return option;
+}
 getAllCategories();
 getAllWorks();
 
@@ -121,8 +124,6 @@ function createWork(work) {
   figure.appendChild(figcaption);
   return figure;
 }
-
-// getAllWorks();
 
 // ******Affichage page editeur *****
 displayPage();

@@ -157,6 +157,7 @@
               <div id="m2" class="photo-add-m2">
                 <!-- -----apercu de la photo à ajouter------ -->
                 <div id="apercu-photo">
+                  <span id="removeImage">&times;</span>
                   <img id="photo-ajoutee" />
                 </div>
                 <div id="beforeAjout">
@@ -172,7 +173,6 @@
                     id="file"
                     required
                   />
-                  <img id="previewImage" src="#" alt="Image Preview" />
                   <p>jpg,png:4mo max</p>
                 </div>
               </div>
@@ -185,11 +185,7 @@
               <div class="select-categorie">
                 <h2 class="info-photo">Categories</h2>
                 <label for="categorie-m2"></label>
-                <select name="category" id="category">
-                  <option value="1">Objets</option>
-                  <option value="2">Appartements</option>
-                  <option value="3">Hôtels & restaurants</option>
-                </select>
+                <select name="category" id="category"></select>
               </div>
 
               <hr />
