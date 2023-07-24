@@ -15,6 +15,14 @@ function getAllCategories() {
         console.log(data);
         allCategories = data;
         fillCategories(data);
+        // *******************verif a faire par Sarra**********************************************
+        // Ajoute des événements sur les filtres de la div "filter-bar"
+        const filters = document.querySelectorAll(".filter");
+        filters.forEach((filter) => {
+          filter.addEventListener("click", function () {
+            filterImagesByCategory(filter.id);
+          });
+        });
       }
     })
     .catch((error) => {
@@ -26,6 +34,24 @@ function getAllCategories() {
     });
 }
 
+function filterImagesByCategory(categoryId) {
+  const gallery = document.querySelector(".gallery");
+  gallery.innerHTML = ""; // Effacer le contenu actuel de la galerie
+
+  // Pour verifier si le bouton "TOUS" est selectionné
+  if (categoryId === "0") {
+    fillWorks(allProjects); //Affiche toutes les images sans filtres
+  } else {
+    // Filtre les images en fonction de la catégorie sélectionnée
+    const filteredProjects = allProjects.filter((project) => {
+      return project.categoryId == categoryId;
+    });
+
+    // Remplie la galerie avec les images filtrées
+    fillWorks(filteredProjects);
+  }
+}
+// **************************************************************************************************
 function fillCategories(tableauCategories) {
   tableauCategories.forEach((element) => {
     const a = createCategorie(element);
@@ -43,6 +69,7 @@ function createCategorie(categorie) {
 }
 
 getAllCategories();
+getAllWorks();
 
 //*********CREATION DES CARTES WORKS********//
 
@@ -81,6 +108,7 @@ function fillWorks(tableauWorks) {
 }
 
 function createWork(work) {
+  // console.log("Image - ID de catégorie associé :", work.categoryId);
   const figure = document.createElement("figure");
   figure.setAttribute("id", "figure" + work.id);
   const img = document.createElement("img");
@@ -94,7 +122,7 @@ function createWork(work) {
   return figure;
 }
 
-getAllWorks();
+// getAllWorks();
 
 // ******Affichage page editeur *****
 displayPage();
@@ -146,5 +174,3 @@ function displayPage() {
     filter.style.display = "flex";
   }
 }
-
-console.log("allProjects");
