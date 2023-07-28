@@ -31,6 +31,8 @@ function getAllCategories() {
     });
 }
 
+// ******Catégories********
+
 // Fonction pour filtrer par catégorie de projet
 
 function filterImagesByCategory(categoryId) {
@@ -50,8 +52,6 @@ function filterImagesByCategory(categoryId) {
     fillWorks(filteredProjects);
   }
 }
-
-// ******Catégories********
 
 // Fonction pour remplir les différentes catégories
 function fillCategories(tableauCategories) {
