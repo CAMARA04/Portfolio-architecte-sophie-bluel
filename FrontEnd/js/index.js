@@ -1,5 +1,8 @@
+// Stockage des données Catégories et Projets
 let allCategories = [];
 let allProjects = [];
+
+// Récupération des données Catégories
 function getAllCategories() {
   fetch("http://localhost:5678/api/categories")
     .then((response) => {
@@ -12,7 +15,9 @@ function getAllCategories() {
     .then((data) => {
       // traitement des données
       if (data) {
-        console.log(data);
+        const allCategory = { id: "0", name: "Tous" };
+        data.unshift(allCategory);
+        console.log("Toutes les catégories:", data);
         allCategories = data;
         fillCategories(data);
       }
@@ -25,6 +30,8 @@ function getAllCategories() {
       );
     });
 }
+
+// Fonction pour filtrer par catégorie de projet
 
 function filterImagesByCategory(categoryId) {
   const gallery = document.querySelector(".gallery");
@@ -43,7 +50,10 @@ function filterImagesByCategory(categoryId) {
     fillWorks(filteredProjects);
   }
 }
-// **************************************************************************************************
+
+// ******Catégories********
+
+// Fonction pour remplir les différentes catégories
 function fillCategories(tableauCategories) {
   tableauCategories.forEach((element) => {
     const a = createCategorie(element);
@@ -53,17 +63,7 @@ function fillCategories(tableauCategories) {
   });
 }
 
-function createCategorie(categorie) {
-  const a = document.createElement("a");
-  a.setAttribute("class", "filter");
-  a.setAttribute("id", categorie.id);
-  a.textContent = categorie.name;
-  // Ajoute des événements sur le filtre lors de sa creation
-  a.addEventListener("click", function () {
-    filterImagesByCategory(categorie.id);
-  });
-  return a;
-}
+// Options des catégories
 function createOption(categorie) {
   const option = document.createElement("option");
   option.setAttribute("value", categorie.id);
@@ -71,11 +71,27 @@ function createOption(categorie) {
 
   return option;
 }
+
+// Fonction pour creer les catégories
+function createCategorie(categorie) {
+  const a = document.createElement("a");
+  a.setAttribute("class", "filter");
+  a.setAttribute("id", categorie.id);
+  a.textContent = categorie.name;
+
+  // Ajoute des événements sur le filtre lors de sa creation
+  a.addEventListener("click", function () {
+    filterImagesByCategory(categorie.id);
+  });
+  return a;
+}
+
 getAllCategories();
 getAllWorks();
 
 //*********CREATION DES CARTES WORKS********//
 
+// Récupération des données works
 function getAllWorks() {
   fetch("http://localhost:5678/api/works")
     .then((response) => {
@@ -103,6 +119,7 @@ function getAllWorks() {
     });
 }
 
+// Fonction remplir la partie "Gallery"
 function fillWorks(tableauWorks) {
   tableauWorks.forEach((element) => {
     const projet = createWork(element);
@@ -110,6 +127,7 @@ function fillWorks(tableauWorks) {
   });
 }
 
+// Fonction pour creer les figures
 function createWork(work) {
   // console.log("Image - ID de catégorie associé :", work.categoryId);
   const figure = document.createElement("figure");
@@ -130,7 +148,7 @@ displayPage();
 function displayPage() {
   //dans le cas ou je suis authentifié
   if (localStorage.getItem("token") && localStorage.getItem("userId")) {
-    //Afficher le bouton logout et cacher login
+    //Affiche le bouton logout et cache login
     const login = document.getElementById("loginHeader");
     login.style.display = "none";
     const logout = document.getElementById("logoutHeader");
@@ -141,36 +159,36 @@ function displayPage() {
       displayPage();
     });
 
-    //afficher les boutons modifier
+    //affiche les boutons modifier
     const listBtnModifier = document.querySelectorAll(".btnModifier");
     listBtnModifier.forEach((element) => {
       element.style.display = "flex";
     });
-    //afficher la barre noir
+    //affiche la barre noir
     const edition = document.querySelector(".edition");
     edition.style.display = "flex";
 
-    //cacher les filtres
+    //cache les filtres
     const filter = document.querySelector(".filter-bar");
     filter.style.display = "none";
   }
   //si je ne suis pas connecté
   else {
-    //cacher le bouton logout et afficher login
+    //cache le bouton logout et affiche login
     const login = document.getElementById("loginHeader");
     login.style.display = "block";
     const logout = document.getElementById("logoutHeader");
     logout.style.display = "none";
 
-    //cacher les boutons modifier
+    //cache les boutons modifier
     const listBtnModifier = document.querySelectorAll(".btnModifier");
     listBtnModifier.forEach((element) => {
       element.style.display = "none";
     });
-    //cacher la barre noir
+    //cache la barre noir
     const edition = document.querySelector(".edition");
     edition.style.display = "none";
-    //afficher les filtres
+    //affiche les filtres
     const filter = document.querySelector(".filter-bar");
     filter.style.display = "flex";
   }

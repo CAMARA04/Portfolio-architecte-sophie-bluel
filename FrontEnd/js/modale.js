@@ -10,12 +10,14 @@ listBtnModifier.forEach(function (bouttonModifier) {
   });
 });
 
+// Modale:Affichage de la galerie
 function displayGallery() {
   const modalwindow1 = document.querySelector(".content-gallery");
   const modalwindow2 = document.querySelector(".content-ajout");
   modalwindow2.style.display = "none";
   modalwindow1.style.display = "flex";
 }
+// Modale: Affichage de la modale Ajout
 function displayAjout() {
   const modalwindow1 = document.querySelector(".content-gallery");
   const modalwindow2 = document.querySelector(".content-ajout");
@@ -23,6 +25,7 @@ function displayAjout() {
   modalwindow2.style.display = "flex";
 }
 
+// Fonction evenements au click (afficher modale 2 & fleche retour)
 function displayModals() {
   const ajoutPhoto = document.querySelector(".Ajout-photo");
   const returnM1 = document.getElementById("return_m1");
@@ -45,6 +48,7 @@ function displayModals() {
 }
 displayModals();
 
+// Evenement au click : Boutons close
 const listBtnClose = document.querySelectorAll(".close");
 listBtnClose.forEach(function (bouttonClose) {
   bouttonClose.addEventListener("click", () => {
@@ -57,11 +61,13 @@ window.addEventListener("click", (event) => {
   }
 });
 
+// Fonction creation de la galerie modale
 function creataGallerie() {
   console.log(allProjects);
 
   const galleryModal = document.querySelector(".modale-gallery");
   document.querySelector(".modale-gallery").innerHTML = "";
+  // Boucle pour aller récuperer tous les projets
   for (let i = 0; i < allProjects.length; i++) {
     const projet = allProjects[i];
     const elementsProjet = createProjetModal(projet);
@@ -69,6 +75,7 @@ function creataGallerie() {
   }
 }
 
+// Creation projets dans la modale
 function createProjetModal(projet) {
   const elementsProjet = document.createElement("figure");
   elementsProjet.setAttribute("id", "figure-modal" + projet.id);
@@ -96,6 +103,7 @@ function createProjetModal(projet) {
   elementsProjet.appendChild(btnEditer);
   return elementsProjet;
 }
+
 // Suppression d'un projet //
 function deleteProject(id) {
   const options = {
@@ -181,6 +189,7 @@ function addproject() {
 }
 addproject();
 
+// Suppression de tous les projets
 function deleteWorks() {
   for (let i = 0; i < allProjects.length; i++) {
     deleteProject(allProjects[i].id);
@@ -208,7 +217,7 @@ removeImage.addEventListener("click", function (event) {
   removeImage.style.display = "none";
   beforeAjout.style.display = "flex";
 
-  // Affichage de l'apercu de la photo à ajoutée //
+  // Affichage de l'apercu de la photo à ajouter //
   inputFile.value = null;
   photoAjoutee.style.display = "none";
 });
@@ -224,7 +233,6 @@ inputFile.addEventListener("change", function () {
 
     // Fonction pour rappel lors du changement de fichier //
     reader.onload = function (e) {
-      // containerAjout.style.padding = "0";
       apercuPhoto.style.display = "block";
       removeImage.style.display = "block";
       beforeAjout.style.display = "none";
