@@ -57,7 +57,7 @@ listBtnClose.forEach(function (bouttonClose) {
 });
 window.addEventListener("click", (event) => {
   if (event.target == modal) {
-    modal.style.display = "block";
+    modal.style.display = "none";
   }
 });
 
@@ -89,6 +89,7 @@ function createProjetModal(projet) {
       deleteProject(projet.id);
     }
   });
+
   const trash = document.createElement("i");
   trash.className = "fa-solid fa-trash-can";
 
@@ -120,7 +121,6 @@ function deleteProject(id) {
       if (response.status == 204) {
         //1/ Supprimer l'element du tableau global allProjects
         allProjects = allProjects.filter((element) => element.id != id);
-        console.log(allProjects);
         //2/ Supprimer la figure de la page index
         document.getElementById("figure" + id).remove();
         //3/ Supprimer la figure depuis la modale
