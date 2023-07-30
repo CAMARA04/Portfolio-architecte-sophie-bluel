@@ -1,5 +1,5 @@
 // Stockage des données Catégories et Projets
-let allCategories = [];
+let allCategories = [{ id: "0", name: "Tous" }];
 let allProjects = [];
 
 // Récupération des données Catégories
@@ -15,11 +15,10 @@ function getAllCategories() {
     .then((data) => {
       // traitement des données
       if (data) {
-        const allCategory = { id: "0", name: "Tous" };
-        data.unshift(allCategory);
-        console.log("Toutes les catégories:", data);
-        allCategories = data;
-        fillCategories(data);
+        data.forEach((element) => {
+          allCategories.push(element);
+        });
+        fillCategories(allCategories);
       }
     })
     .catch((error) => {
@@ -58,8 +57,10 @@ function fillCategories(tableauCategories) {
   tableauCategories.forEach((element) => {
     const a = createCategorie(element);
     document.querySelector(".filter-bar").appendChild(a);
-    const option = createOption(element);
-    document.getElementById("category").appendChild(option);
+    if (element.id != 0) {
+      const option = createOption(element);
+      document.getElementById("category").appendChild(option);
+    }
   });
 }
 
